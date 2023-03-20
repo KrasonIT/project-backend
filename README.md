@@ -1,16 +1,13 @@
 # Flask Web App
 
-A simple Flask web app for greeting users and serving static files of frontend.
+Aby uruchomić plik Dockerfile, należy wykonać następujące polecenia:
 
-## Getting Started
+1. Utwórz obraz z pliku Dockerfile.
 
-1. Clone the repository.
-2. Install the requirements: `pip install -r requirements.txt`.
-3. Run the app: `python app.py`.
-4. Navigate to `http://localhost:5000` in your web browser to view the app.
+docker build -t "nazwa_obrazu" .
 
-## Routes
+2. Uruchom obraz jako kontener.
 
-- `/`: Renders a simple greeting to the user.
-- `/greet/<name>`: Renders a personalized greeting to the user.
-- `/static/<path:path>`: Serves a static frontend file from the `static` directory.
+docker run --name nazwa_kontenera -p 8080:8080 "nazwa_obrazu"
+
+Po uruchomieniu kontenera można przejść do przeglądarki i wpisać adres 'http://localhost:8080/', aby wyświetlić stronę Flask.
