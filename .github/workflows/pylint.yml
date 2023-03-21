@@ -17,4 +17,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run pylint
       run: |
-        pylint helloworld.py
+        pylint app/app.py
