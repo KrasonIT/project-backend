@@ -16,18 +16,16 @@ def index():
     return 'Hello, World!'
 
 
-@app.route('/greet/<name>')
-def greet(name):
+@main.route("/hello", methods=["GET", "POST"])
+def hello():
     """
-    Renders a personalized greeting to the user.
-    """
-    return f'Hello, {name}!'
+      Możliwość wpisania imienia, aplikacja wyświetli "Hello, (name)!".
+       """
+    if request.method == "POST":
+        name = request.form.get("name")
+        return f"Hello, {name}!"
+    return render_template("hello.html")
 
 
-@app.route('/static/<path:path>')
-def serve_static(path):
-    """
-    Serves a static frontend file from the 'static' directory.
-    """
-    root_dir = os.getcwd()
-    return send_from_directory(os.path.join(root_dir, 'static'), path)
+if __name__ == "__main__":
+    main.run(debug=True, host="0.0.0.0", port=8080)
